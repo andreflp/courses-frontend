@@ -1,0 +1,104 @@
+<form>
+  <div layout="row">
+    <h2>Novo Usuário</h2>
+  </div>
+  <div layout="row">
+    <md-input-container class="md-block btn-space" flex="33">
+      <label class="label-align">Nome</label>
+      <input md-maxlength="30" required name="name" ng-model="user.name" />
+  
+      <div class="hint" ng-if="showHints">Tell us what we should call you!</div>
+
+      <div ng-messages="userForm.name.$error" ng-if="!showHints">
+        <div ng-message="required">Name is required.</div>
+        <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+      </div>
+    </md-input-container>
+    <md-input-container class="md-block btn-space" flex="33">
+      <label class="label-align">Telefone</label>
+      <input name="social" ng-model="user.social" ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" />
+  
+      <div class="hint" ng-if="showHints">###-##-####</div>
+  
+      <div ng-messages="userForm.social.$error" ng-if="!showHints">
+        <div ng-message="pattern">###-##-#### - Please enter a valid SSN.</div>
+      </div>
+    </md-input-container>
+   
+    <md-input-container class="md-block btn-space" flex="33">
+      <label class="label-align">Rua</label>
+      <input name="social" ng-model="user.social" ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" />
+  
+      <div class="hint" ng-if="showHints">###-##-####</div>
+  
+      <div ng-messages="userForm.social.$error" ng-if="!showHints">
+        <div ng-message="pattern">###-##-#### - Please enter a valid SSN.</div>
+      </div>
+    </md-input-container>
+  </div>
+
+  <div layout="row">
+    <md-input-container class="md-block btn-space" flex="33">
+      <label class="label-align">Número</label>
+      <input md-maxlength="30" required name="name" ng-model="user.name" />
+  
+      <div class="hint" ng-if="showHints">Tell us what we should call you!</div>
+
+      <div ng-messages="userForm.name.$error" ng-if="!showHints">
+        <div ng-message="required">Name is required.</div>
+        <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+      </div>
+    </md-input-container>
+    <md-input-container class="md-block btn-space" flex="33">
+      <label class="label-align">Cidade</label>
+      <input name="social" ng-model="user.social" ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" />
+  
+      <div class="hint" ng-if="showHints">###-##-####</div>
+  
+      <div ng-messages="userForm.social.$error" ng-if="!showHints">
+        <div ng-message="pattern">###-##-#### - Please enter a valid SSN.</div>
+      </div>
+    </md-input-container>
+   
+    <md-input-container class="md-block btn-space" flex="33">
+      <label class="label-align">UF</label>
+      <input name="social" ng-model="user.social" ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" />
+  
+      <div class="hint" ng-if="showHints">###-##-####</div>
+  
+      <div ng-messages="userForm.social.$error" ng-if="!showHints">
+        <div ng-message="pattern">###-##-#### - Please enter a valid SSN.</div>
+      </div>
+    </md-input-container>
+  </div>
+
+  <div layout="row">
+    <md-input-container class="md-block btn-space" flex="33">
+      <label class="label-align">País</label>
+      <input md-maxlength="30" required name="name" ng-model="user.name" />
+  
+      <div class="hint" ng-if="showHints">Tell us what we should call you!</div>
+
+      <div ng-messages="userForm.name.$error" ng-if="!showHints">
+        <div ng-message="required">Name is required.</div>
+        <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+      </div>
+    </md-input-container>
+    <md-input-container class="md-block btn-space" flex="33">
+      <label class="label-align">Data de Admissão</label>
+      <input name="social" ng-model="user.social" ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" />
+  
+      <div class="hint" ng-if="showHints">###-##-####</div>
+  
+      <div ng-messages="userForm.social.$error" ng-if="!showHints">
+        <div ng-message="pattern">###-##-#### - Please enter a valid SSN.</div>
+      </div>
+    </md-input-container>
+  </div>
+  <div layout="row" layout-align="center center">
+    <a class="md-button md-raised md-primary btn-default" ui-sref="course">
+      Salvar
+    </a>
+  </div>
+</form>
+

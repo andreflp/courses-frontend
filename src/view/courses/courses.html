@@ -1,0 +1,61 @@
+<div layout="column">
+  <div layout="row">
+    <h2>Cursos</h2>
+  </div>
+  
+  <div>
+    <div class="md-whiteframe-4dp" >
+      <md-toolbar class="md-table-toolbar md-default">
+        <div class="md-toolbar-tools">
+          <span>Cursos</span>
+          <span flex></span>
+
+          <a class="md-button md-raised md-primary btn-default" ui-sref="user">
+            <md-tooltip md-direction="left">Adicionar novo curso</md-tooltip> Novo
+          </a>
+        </div>
+      </md-toolbar>
+      <md-table-container>
+        <table md-table md-row-select multiple md-progress="promise">
+          <thead md-head md-order="query.order" md-on-reorder="getDesserts">
+            <tr md-row>
+              <th md-column md-order-by="nameToLower"><span>Titulo</span></th>
+              <th md-column md-order-by="calories.value"><span>Descrição</span></th>
+              <th md-column>Carga Horária</th>
+              <th md-column >Ações</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="dessert in desserts">
+              <td md-cell>{{dessert.name}}</td>
+              <td md-cell>{{dessert.calories}}</td>
+              <td md-cell>{{dessert.fat }}</td>
+              <td md-cell>
+                <md-button class="md-icon-button md-primary btn-table" aria-label="More">
+                  <md-tooltip md-direction="left">Editar</md-tooltip>
+                  <md-icon style="font-size: 18px;">edit</md-icon>
+                </md-button>
+                <md-button class="md-icon-button btn-table" aria-label="More">
+                  <md-tooltip md-direction="left">Remover</md-tooltip>
+                  <md-icon md-colors="{color: 'red-400'}" style="font-size: 18px;">delete</md-icon>
+                </md-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+      <md-table-pagination 
+        md-limit="query.limit" 
+        md-label="{page: 'Página:', rowsPerPage: 'Linhas por página:', of: 'de'}" 
+        md-limit-options="[5, 10, 15]" 
+        md-page="query.page" 
+        md-total="{{desserts.length}}" 
+        md-on-paginate="getDesserts" 
+        md-page-select>
+      </md-table-pagination>
+    </div>
+
+    <div flex="10"></div>
+  </div>
+  
+</div>
