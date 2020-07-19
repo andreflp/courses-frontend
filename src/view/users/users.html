@@ -1,6 +1,9 @@
 <div layout="column">
   <div layout="row">
-    <h2>Usuários</h2>
+    <md-input-container style="margin-bottom: 0;" flex="33">
+      <input ng-model="search" type="text" placeholder="Pesquisar" aria-label="Pesquisar">
+      <md-icon style="display:inline-block;">search</md-icon>
+    </md-input-container>
   </div>
   
   <div>
@@ -17,31 +20,31 @@
         </div>
       </md-toolbar>
       <md-table-container>
-        <table md-table md-row-select multiple md-progress="promise">
+        <table md-table md-progress="promise">
           <thead md-head md-order="query.order" md-on-reorder="getDesserts">
             <tr md-row>
-              <th md-column md-order-by="nameToLower"><span>Nome</span></th>
-              <th md-column md-order-by="calories.value"><span>Telefone</span></th>
+              <th md-column md-order-by="name" style="outline: none; border: 0px;" ng-click="sortColumn('name')">Nome</th>
+              <th md-column>Telefone</th>
               <th md-column>Cidade</th>
               <th md-column>Data Admissão</th>
               <th md-column>Ações</th>
             </tr>
           </thead>
           <tbody md-body>
-            <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="dessert in desserts">
-              <td md-cell>{{dessert.name}}</td>
-              <td md-cell>{{dessert.calories}}</td>
-              <td md-cell>{{dessert.fat }}</td>
-              <td md-cell>{{dessert.carbs}}</td>
+            <tr md-row md-select="user" md-select-id="name" md-auto-select ng-repeat="user in users | filter: search | orderBy: sort : direction">
+              <td md-cell>{{user.name}}</td>
+              <td md-cell>{{user.phone}}</td>
+              <td md-cell>{{user.city}}</td>
+              <td md-cell>{{user.admission_date | date:'dd/MM/yyyy'}}</td>
               <td md-cell>
-                <md-button class="md-icon-button md-primary btn-table" aria-label="More">
+                <a class="md-icon-button cursor" ng-click="edit(user.id)">
                   <md-tooltip md-direction="left">Editar</md-tooltip>
-                  <md-icon style="font-size: 18px;">edit</md-icon>
-                </md-button>
-                <md-button class="md-icon-button btn-table" aria-label="More">
+                  <md-icon md-colors="{color: 'blue-600'}" style="font-size: 18px;">edit</md-icon>
+                </a>
+                <a class="md-icon-button cursor">
                   <md-tooltip md-direction="left">Remover</md-tooltip>
                   <md-icon md-colors="{color: 'red-400'}" style="font-size: 18px;">delete</md-icon>
-                </md-button>
+                </a>
               </td>
             </tr>
           </tbody>

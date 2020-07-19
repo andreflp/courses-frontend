@@ -53,3 +53,11 @@
 .transition.ng-enter-active {
   opacity: 1;
 }
+
+md-toast.md-default-theme .md-toast-content .md-button.md-highlight.md-primary, md-toast .md-toast-content .md-button.md-highlight.md-primary {
+  color: rgb(120, 229, 241)
+}
+
+.cursor {
+  cursor: pointer;
+}

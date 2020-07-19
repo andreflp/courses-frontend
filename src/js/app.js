@@ -1,1 +1,1 @@
-const app = angular.module('app', ['ui.router', 'ngMaterial', 'ngMessages', 'md.data.table'])
+const app = angular.module('app', ['ui.router', 'ngMaterial', 'ngMessages', 'md.data.table', 'ui.mask'])

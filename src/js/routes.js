@@ -8,9 +8,9 @@ app.config(($stateProvider, $urlRouterProvider) => {
   }
 
   const courseEditRouter = {
-    url: '/courses',
+    url: '/courses/:id',
     templateUrl: '/src/view/courses/courseForm.html',
-    controller: 'coursesCtrl'
+    controller: 'courseCtrl'
   }
 
   const courseRouter = {
@@ -20,7 +20,7 @@ app.config(($stateProvider, $urlRouterProvider) => {
   }
 
   const usersCourseRouter = {
-    url: '/courses/users/:id',
+    url: '/courses/:id/users',
     templateUrl: '/src/view/courses/usersCourse.html',
     controller: 'usersCourseCtrl'
   }
@@ -34,7 +34,7 @@ app.config(($stateProvider, $urlRouterProvider) => {
   const userEditRouter = {
     url: '/users/:id',
     templateUrl: "/src/view/users/userForm.html",
-    controller: 'usersCtrl'
+    controller: 'userCtrl'
   }
 
   const userRouter = {
