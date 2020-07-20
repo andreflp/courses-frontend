@@ -1,4 +1,4 @@
-app.controller('courseCtrl', function ($scope, $state, $stateParams, coursesService, notifyService) {
+app.controller('courseCtrl', function ($scope, $state, $stateParams, coursesService, notifyService, progressBarService) {
   $scope.id = $stateParams.id
 
   $scope.page = $scope.id ? $scope.page = "Editar" : $scope.page = "Novo"
@@ -8,8 +8,11 @@ app.controller('courseCtrl', function ($scope, $state, $stateParams, coursesServ
   }
 
   if($stateParams.id) {
+    progressBarService.show()
+
     $scope.findById($stateParams.id).then(response => {
       $scope.course = response.data
+      progressBarService.hide()
     })
   }
   
@@ -24,14 +27,21 @@ app.controller('courseCtrl', function ($scope, $state, $stateParams, coursesServ
   $scope.save = async function(course) {
     try {
       if($scope.courseForm.$invalid) return
+
+      progressBarService.show()
+
       await coursesService.save(course)
       delete $scope.course
+
       $scope.courseForm.$setPristine()
       $scope.courseForm.$setUntouched()
+
       notifyService.showSuccess('Salvo com sucesso!')
+      progressBarService.hide()
       $state.go('courses')
     } catch (error) {
       notifyService.showError('Ops! Algo deu errado.')
+      progressBarService.hide()
       console.log(error)
     }
   }
@@ -39,14 +49,21 @@ app.controller('courseCtrl', function ($scope, $state, $stateParams, coursesServ
   $scope.update = async function(course) {
     try {
       if($scope.courseForm.$invalid) return
+
+      progressBarService.show()
+
       await coursesService.update(course)
       delete $scope.course
+
       $scope.courseForm.$setPristine()
       $scope.courseForm.$setUntouched()
+
       notifyService.showSuccess('Salvo com sucesso!')
+      progressBarService.hide()
       $state.go('courses')
     } catch (error) {
       notifyService.showError('Ops! Algo deu errado.')
+      progressBarService.hide()
       console.log(error)
     }
   }

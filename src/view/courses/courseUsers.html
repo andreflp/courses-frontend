@@ -24,7 +24,7 @@
   </div>
 
   <div layout="row" style="margin-top: -61px; margin-bottom: 20px; margin-left: 7px;">
-    <md-button flex-offset="50" md-no-ink class="md-primary" ng-click="updateCourse()">
+    <md-button flex-offset="50" md-no-ink class="md-primary" ng-click="updateCourse()" ng-disabled="users.length == 0">
       <md-tooltip md-direction="right">Associar usuários ao curso</md-tooltip> Associar
     </md-button>
   </div>
@@ -35,12 +35,14 @@
         <div class="md-toolbar-tools">
           <span>{{ course.title }}</span>
           <span flex></span>
-
           <md-input-container flex="30" style="margin-top: 43px;">
             <input ng-model="search" type="text" aria-label="Pesquisar">
             <md-icon style="display:inline-block;">search</md-icon>
           </md-input-container>
-          
+          <md-button class="md-primary md-hue-1" ng-click="courseUsersReport()" md-no-ink md-colors="{color: 'blue-600'}" ng-disabled="users.length == 0">
+            <md-tooltip md-direction="left">Relação de usuários do curso</md-tooltip>
+            Relatório
+          </md-button>
         </div>
       </md-toolbar>
       <md-table-container>
@@ -91,9 +93,5 @@
         md-page-select>
       </md-table-pagination>
     </div>
-
-    
-
   </div>
-  
 </div>

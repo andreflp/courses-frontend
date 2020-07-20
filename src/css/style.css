@@ -34,12 +34,7 @@
 }
 
 .btn-space {
-  padding-left: 12px; 
-  padding-right: 12px;
-}
-
-.label-align {
-  margin-left: 10px;
+  padding-right: 18px;
 }
 
 .transition.ng-enter {
@@ -90,5 +85,9 @@ md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .
 
 .table-icon {
   font-size: 18px!important;
+}
+
+.table-header-icon {
+  font-size: 22px!important;
 }
 

@@ -13,10 +13,16 @@
         <span>Usuários</span>
         <span flex></span>
         
-        <a class="md-button md-raised md-primary btn-default" ui-sref="user">
-          <md-tooltip md-direction="left">Adicionar novo usuário</md-tooltip> Novo
-        </a>
-        
+        <md-button class="md-primary md-hue-1" ng-click="usersReport()" md-no-ink md-colors="{color: 'blue-600'}" ng-disabled="users.length == 0">
+          <md-tooltip md-direction="left">Relação de usuários</md-tooltip>
+          Relatório
+        </md-button>
+
+        <md-button class="md-primary md-hue-1" ui-sref="user" md-no-ink md-colors="{color: 'blue-600'}">
+          <md-tooltip md-direction="left">Adicionar novo usuário</md-tooltip>
+          Novo
+        </md-button>
+        {{ window }}
       </div>
     </md-toolbar>
     <md-table-container>
@@ -69,7 +75,6 @@
       md-limit-options="[5, 10, 15]" 
       md-page="query.page" 
       md-total="{{users.length}}" 
-      md-on-paginate="findAll"
       md-page-select>
     </md-table-pagination>
   </div>

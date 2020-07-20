@@ -13,7 +13,7 @@
 
     <md-input-container class="md-block btn-space" flex="33">
       <label class="label-align">Telefone</label>
-      <input ng-required="true" name="phone" ui-options={addDefaultPlaceholder:false} ng-model="user.phone" ui-mask="99999-9999" />
+      <input ng-required="true" name="phone" ui-options={addDefaultPlaceholder:false} ng-model="user.phone" ui-mask="(99) 99999-9999" />
       <div ng-show="userForm.$submitted || userForm.phone.$touched" ng-messages="userForm.phone.$error">
         <div ng-message="required">O campo telefone é obrigatório.</div>
       </div>

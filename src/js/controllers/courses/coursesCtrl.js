@@ -1,4 +1,4 @@
-app.controller('coursesCtrl', function ($scope, $state, $mdDialog, notifyService, coursesService) {
+app.controller('coursesCtrl', function ($scope, $state, $mdDialog, notifyService, coursesService, reportService, progressBarService) {
   $scope.courses = []
 
   $scope.query = {
@@ -24,7 +24,8 @@ app.controller('coursesCtrl', function ($scope, $state, $mdDialog, notifyService
     try {
       await coursesService.remove(id)
       notifyService.showSuccess('Removido com sucesso!')
-      $scope.findAll()
+      await $scope.findAll()
+
     } catch (error) {
       notifyService.showError('Ops! Algo deu errado.')
       console.log(error)
@@ -32,10 +33,15 @@ app.controller('coursesCtrl', function ($scope, $state, $mdDialog, notifyService
   }
 
   $scope.findAll = async function() {
+    progressBarService.show()
     $scope.loading = true
+
     const response = await coursesService.findAll()
+
     $scope.courses = response.data
+    
     $scope.loading = false
+    progressBarService.hide()
   }
 
   $scope.findAll()
@@ -43,17 +49,35 @@ app.controller('coursesCtrl', function ($scope, $state, $mdDialog, notifyService
 
   $scope.confirmDialog = function(ev, id) {
     const confirm = $mdDialog.confirm()
-          .title('Alerta')
-          .textContent('Deseja realmente remover este curso?')
-          .targetEvent(ev)
-          .ok('Sim')
-          .cancel('Cancelar');
+      .title('Alerta')
+      .textContent('Deseja realmente remover este curso?')
+      .targetEvent(ev)
+      .ok('Sim')
+      .cancel('Cancelar');
 
     $mdDialog.show(confirm).then(function() {
       $scope.removeCourse(id)
     }, function() {
       
-    });
-  };
+    })
+  }
+
+  $scope.coursesReport = function() {
+    let tableData = {}
+    let rows = []
+    const cols = ['Título', 'Carga Horária', 'Descrição']
+
+    $scope.courses.forEach(function(course) {
+      const row = [course.title, course.workload, course.description]
+      rows.push(row)
+    })
+    
+    tableData.rows = rows
+    tableData.cols = cols
+    tableData.title = 'Relação de cursos'
+    tableData.file = 'cursos'
+
+    reportService.printPDF(tableData)
+  }
 
 })

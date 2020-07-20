@@ -1,4 +1,4 @@
-app.controller('usersCtrl', function ($scope, $state, usersService, notifyService, $mdDialog) {
+app.controller('usersCtrl', function ($scope, $state, $filter, usersService, notifyService, $mdDialog, reportService, progressBarService) {
   $scope.users = []
 
   $scope.query = {
@@ -19,8 +19,10 @@ app.controller('usersCtrl', function ($scope, $state, usersService, notifyServic
   $scope.removeUser = async function(id) {
     try {
       await usersService.remove(id)
+
       notifyService.showSuccess('Removido com sucesso!')
-      $scope.findAll()
+
+      await $scope.findAll()
     } catch (error) {
       notifyService.showError('Ops! Algo deu errado.')
       console.log(error)
@@ -28,10 +30,14 @@ app.controller('usersCtrl', function ($scope, $state, usersService, notifyServic
   }
 
   $scope.findAll = async function() {
+    progressBarService.show()
     $scope.loading = true
+
     const response = await usersService.findAll()
+    
     $scope.users = response.data
     $scope.loading = false
+    progressBarService.hide()
   }
 
   $scope.findAll()
@@ -49,6 +55,25 @@ app.controller('usersCtrl', function ($scope, $state, usersService, notifyServic
     }, function() {
       
     })
+  }
+
+  $scope.usersReport = function() {
+    let tableData = {}
+    let rows = []
+    const cols = ['Nome', 'Telefone', 'Cidade', 'Data Admissão']
+
+    $scope.users.forEach(function(user) {
+      const row = [user.name, $filter('phone')(user.phone), user.city, $filter('date')(user.admission_date, 'dd/MM/yyyy')]
+      rows.push(row)
+    })
+    
+    tableData.rows = rows
+    tableData.cols = cols
+    tableData.title = 'Relação de usuários'
+    tableData.file = 'usuarios'
+
+    reportService.printPDF(tableData)
+    
   }
   
 })

@@ -1,5 +1,5 @@
 app.config(($stateProvider, $urlRouterProvider) => {
-  $urlRouterProvider.otherwise('/courses');
+  $urlRouterProvider.otherwise('/courses')
 
   const coursesRouter = {
     url: '/courses',

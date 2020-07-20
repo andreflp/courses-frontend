@@ -1,6 +1,6 @@
 <div layout="column">
   <div layout="row">
-    <md-input-container flex="33">
+    <md-input-container flex="33" style="margin-bottom: 0;">
       <input ng-model="search" type="text" placeholder="Pesquisar" aria-label="Pesquisar">
       <md-icon style="display:inline-block;">search</md-icon>
     </md-input-container>
@@ -12,9 +12,14 @@
         <span>Cursos</span>
         <span flex></span>
 
-        <a class="md-button md-raised md-primary btn-default" ui-sref="course">
+        <md-button class="md-primary md-hue-1" ng-click="coursesReport()" md-no-ink md-colors="{color: 'blue-600'}" ng-disabled="courses.length == 0">
+          <md-tooltip md-direction="left">Relação de cursos</md-tooltip>
+          Relatório
+        </md-button>
+
+        <md-button class="md-primary md-hue-1" ui-sref="course" md-no-ink md-colors="{color: 'blue-600'}">
           <md-tooltip md-direction="left">Adicionar novo curso</md-tooltip> Novo
-        </a>
+        </md-button>
       </div>
     </md-toolbar>
     <md-table-container>
