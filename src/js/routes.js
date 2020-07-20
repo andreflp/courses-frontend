@@ -19,10 +19,10 @@ app.config(($stateProvider, $urlRouterProvider) => {
     controller: 'courseCtrl'
   }
 
-  const usersCourseRouter = {
+  const courseUsersRouter = {
     url: '/courses/:id/users',
-    templateUrl: '/src/view/courses/usersCourse.html',
-    controller: 'usersCourseCtrl'
+    templateUrl: '/src/view/courses/courseUsers.html',
+    controller: 'courseUsersCtrl'
   }
 
   const usersRouter = {
@@ -46,7 +46,7 @@ app.config(($stateProvider, $urlRouterProvider) => {
   $stateProvider.state('courses', coursesRouter)
   $stateProvider.state('course', courseRouter)
   $stateProvider.state('courseEdit', courseEditRouter)
-  $stateProvider.state('usersCourse', usersCourseRouter)
+  $stateProvider.state('courseUsers', courseUsersRouter)
   $stateProvider.state('users', usersRouter)
   $stateProvider.state('user', userRouter)
   $stateProvider.state('userEdit', userEditRouter)

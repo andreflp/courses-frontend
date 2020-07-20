@@ -27,6 +27,7 @@ app.controller('courseCtrl', function ($scope, $state, $stateParams, coursesServ
       await coursesService.save(course)
       delete $scope.course
       $scope.courseForm.$setPristine()
+      $scope.courseForm.$setUntouched()
       notifyService.showSuccess('Salvo com sucesso!')
       $state.go('courses')
     } catch (error) {
@@ -41,6 +42,7 @@ app.controller('courseCtrl', function ($scope, $state, $stateParams, coursesServ
       await coursesService.update(course)
       delete $scope.course
       $scope.courseForm.$setPristine()
+      $scope.courseForm.$setUntouched()
       notifyService.showSuccess('Salvo com sucesso!')
       $state.go('courses')
     } catch (error) {

@@ -11,6 +11,10 @@ app.controller('coursesCtrl', function ($scope, $state, $mdDialog, notifyService
     $state.go('courseEdit', { id: id })
   }
 
+  $scope.users = function(id) {
+    $state.go('courseUsers', { id: id })
+  }
+
   $scope.sortColumn = function (field) {
     $scope.sort = field
     $scope.direction = !$scope.direction
@@ -27,10 +31,11 @@ app.controller('coursesCtrl', function ($scope, $state, $mdDialog, notifyService
     }
   }
 
-  $scope.findAll = function() {
-    coursesService.findAll().then(function(courses) {
-      $scope.courses = courses.data
-    })
+  $scope.findAll = async function() {
+    $scope.loading = true
+    const response = await coursesService.findAll()
+    $scope.courses = response.data
+    $scope.loading = false
   }
 
   $scope.findAll()

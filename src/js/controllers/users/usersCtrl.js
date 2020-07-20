@@ -1,4 +1,4 @@
-app.controller('usersCtrl', function ($scope, $state, usersService, notifyService) {
+app.controller('usersCtrl', function ($scope, $state, usersService, notifyService, $mdDialog) {
   $scope.users = []
 
   $scope.query = {
@@ -27,16 +27,28 @@ app.controller('usersCtrl', function ($scope, $state, usersService, notifyServic
     }
   }
 
-  $scope.findAll = function() {
-    usersService.findAll().then(function(users) {
-      $scope.users = users.data
-    })
+  $scope.findAll = async function() {
+    $scope.loading = true
+    const response = await usersService.findAll()
+    $scope.users = response.data
+    $scope.loading = false
   }
 
   $scope.findAll()
+
+  $scope.confirmDialog = function(ev, id) {
+    const confirm = $mdDialog.confirm()
+      .title('Alerta')
+      .textContent('Deseja realmente remover este usuário?')
+      .targetEvent(ev)
+      .ok('Sim')
+      .cancel('Cancelar')
+
+    $mdDialog.show(confirm).then(function() {
+      $scope.removeUser(id)
+    }, function() {
+      
+    })
+  }
   
 })
-
-  // $scope.teste = function(id) {
-  //   $state.go('userEdit', { id: id })
-  // }

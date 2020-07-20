@@ -4,6 +4,10 @@ app.factory('coursesService', function($http, config) {
     return $http.get(`${config.baseUrl}/courses`)
   }
 
+  const _findAllCourseUsers = function(id) {
+    return $http.get(`${config.baseUrl}/courses/${id}/users`)
+  }
+
   const _findById = function(id) {
     return $http.get(`${config.baseUrl}/courses/${id}`)
   }
@@ -19,6 +23,10 @@ app.factory('coursesService', function($http, config) {
   const _remove = function(id) {
     return $http.delete(`${config.baseUrl}/courses/${id}`)
   }
+
+  const _removeUserCourse = function(idCourse, idUser) {
+    return $http.delete(`${config.baseUrl}/courses/${idCourse}/${idUser}`)
+  }
   
 
   return {
@@ -26,7 +34,9 @@ app.factory('coursesService', function($http, config) {
     findById: _findById,
     save: _save,
     update: _update,
-    remove: _remove
+    remove: _remove,
+    removeUserCourse: _removeUserCourse,
+    findAllCourseUsers: _findAllCourseUsers
   }
 
 })

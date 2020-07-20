@@ -1,4 +1,4 @@
-<form name="courseForm">
+<form name="courseForm" novalidate>
   <div layout="row">
     <h2>Novo Curso</h2>
   </div>
@@ -6,7 +6,7 @@
     <md-input-container class="md-block btn-space" flex="50">
       <label class="label-align">Título</label>
       <input ng-required="true" name="title" ng-model="course.title" />
-      <div ng-show="courseForm.title.$dirty" ng-messages="courseForm.title.$error">
+      <div ng-show="courseForm.$submitted || courseForm.title.$touched" ng-messages="courseForm.title.$error">
         <div ng-message="required">O campo título é obrigatório.</div>
       </div>
     </md-input-container>
@@ -14,7 +14,7 @@
     <md-input-container class="md-block btn-space" flex="50">
       <label class="label-align">Carga Horária</label>
       <input ng-required="true" name="workload" ng-model="course.workload" />
-      <div ng-show="courseForm.workload.$dirty" ng-messages="courseForm.workload.$error">
+      <div ng-show="courseForm.$submitted || courseForm.workload.$touched" ng-messages="courseForm.workload.$error">
         <div ng-message="required">O campo carga horária é obrigatório.</div>
       </div>
     </md-input-container>
@@ -23,7 +23,7 @@
   <div layout="row">
     <md-input-container class="md-block btn-space" flex="50">
       <label class="label-align">Descrição</label>
-      <textarea ng-required="true" name="description" ng-model="course.description" md-maxlength="150" rows="3" md-select-on-focus></textarea>
+      <textarea name="description" ng-model="course.description" md-maxlength="150" rows="3" md-select-on-focus></textarea>
       <div ng-show="courseForm.description.$dirty" ng-messages="courseForm.description.$error">
         <div ng-message="required">O campo descrição é obrigatório.</div>
       </div>
@@ -31,8 +31,8 @@
   </div>
 
   <div layout="row" layout-align="center center">
-    <a class="md-button md-raised md-primary btn-default" ng-click="saveCourse(course)">
+    <md-button type="submit" class="md-button md-raised md-primary btn-default" ng-click="saveCourse(course)">
       Salvar
-    </a>
+    </md-button>
   </div>
 </form>

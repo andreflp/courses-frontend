@@ -30,6 +30,7 @@ app.controller('userCtrl', function ($scope, $stateParams, $state, $filter, user
       await usersService.save(user)
       delete $scope.user
       $scope.userForm.$setPristine()
+      $scope.userForm.$setUntouched()
       notifyService.showSuccess('Salvo com sucesso!')
       $state.go('users')
     } catch (error) {
@@ -45,6 +46,7 @@ app.controller('userCtrl', function ($scope, $stateParams, $state, $filter, user
       await usersService.update(user)
       delete $scope.user
       $scope.userForm.$setPristine()
+      $scope.userForm.$setUntouched()
       notifyService.showSuccess('Salvo com sucesso!')
       $state.go('users')
     } catch (error) {

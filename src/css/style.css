@@ -33,10 +33,6 @@
   color: #ffffff!important;
 }
 
-.btn-table {
-  margin-left: -12px!important;
-}
-
 .btn-space {
   padding-left: 12px; 
   padding-right: 12px;
@@ -58,6 +54,41 @@ md-toast.md-default-theme .md-toast-content .md-button.md-highlight.md-primary, 
   color: rgb(120, 229, 241)
 }
 
+md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple {
+  color: rgb(18, 77, 161)!important;
+}
+
 .cursor {
   cursor: pointer;
 }
+
+.md-dialog-content {
+  max-width: 500px;
+}
+
+.selectdemoSelectHeader .demo-header-searchbox {
+  border: none;
+  outline: none;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+.selectdemoSelectHeader .demo-select-header {
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1), 0 0 0 0 rgba(0, 0, 0, 0.14),
+    0 0 0 0 rgba(0, 0, 0, 0.12);
+  padding-left: 10.667px;
+  height: 48px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: auto;
+}
+.selectdemoSelectHeader md-content._md {
+  max-height: 240px;
+}
+
+.table-icon {
+  font-size: 18px!important;
+}
+
