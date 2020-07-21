@@ -48,6 +48,8 @@ app.controller('courseUsersCtrl', function ($scope, $stateParams, $mdDialog, cou
 
       notifyService.showSuccess('Salvo com sucesso!')
 
+      $scope.selected = []
+
       await $scope.findAllCourseUsers()
 
       progressBarService.hide()
