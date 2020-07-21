@@ -52,7 +52,7 @@ app.controller('courseCtrl', function ($scope, $state, $stateParams, coursesServ
 
       progressBarService.show()
 
-      await coursesService.update(course)
+      await coursesService.updatePartial(course)
       delete $scope.course
 
       $scope.courseForm.$setPristine()

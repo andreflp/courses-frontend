@@ -20,6 +20,10 @@ app.factory('coursesService', function($http, config) {
     return $http.put(`${config.baseUrl}/courses`, course)
   }
 
+  const _updatePartial = function(course) {
+    return $http.patch(`${config.baseUrl}/courses`, course)
+  }
+
   const _remove = function(id) {
     return $http.delete(`${config.baseUrl}/courses/${id}`)
   }
@@ -34,6 +38,7 @@ app.factory('coursesService', function($http, config) {
     findById: _findById,
     save: _save,
     update: _update,
+    updatePartial: _updatePartial,
     remove: _remove,
     removeUserCourse: _removeUserCourse,
     findAllCourseUsers: _findAllCourseUsers
